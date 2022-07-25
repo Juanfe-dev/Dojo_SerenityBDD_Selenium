@@ -1,5 +1,6 @@
 package serenityswag.authentication;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -27,7 +28,11 @@ public class WhenLogginOn extends UIInteractionSteps {
 
                /* assertThat($(".title").getText()).isEqualToIgnoringCase("Products");*/
 
-                login.asAStandarUser();
-                assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products");
+                login.as(User.STANDARD_USER);
+                Serenity.reportThat("The inventory page should be displayed with the correct title",
+                        () -> assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products")
+                );
+
         }
+
 }
