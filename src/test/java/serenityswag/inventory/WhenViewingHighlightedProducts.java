@@ -45,7 +45,9 @@ import static org.assertj.core.api.Assertions.assertThat;
             //el explorador del item deseado, de clic en el
             //e ingrese a los detalles de ese item (openProductDetailsFor)
             productList.openProductDetailsFor(firstItemName);
-
             assertThat(productDetails.productName()).isEqualTo(firstItemName);
+
+            //should contain: ".inventory_details_container img[alt='Sauce Labs Backpack']"
+            productDetails.productImageWithAltValueOf(firstItemName).shouldBeVisible();
         }
     }
