@@ -12,14 +12,20 @@ public class LoginActions extends UIInteractionSteps {
         openUrl("https://www.saucedemo.com/");
 
         //Otras maneras (By.id) Ch4.2.0
-        /*  $(By.id("user-name")).sendKeys(user.getUsername());
+        /**  $(By.id("user-name")).sendKeys(user.getUsername());
             $(By.id("password")).sendKeys(user.getPassword());
             $(By.id("login-button")).click();*/
 
-        //Version por id mas simplificado aun
-            $("#user-name").sendKeys(user.getUsername());
+        //Version por id mas simplificado aun (# hace referencia a un id en css)
+       /**   $("#user-name").sendKeys(user.getUsername());
             $("#password").sendKeys(user.getPassword());
-            $("#login-button").click();
+            $("#login-button").click();*/
+
+        //Version por By.Name
+            find(By.name("user-name")).sendKeys(user.getUsername());
+            find(By.name("password")).sendKeys(user.getPassword());
+            find(By.name("login-button")).click();
+
     }
 
     /*@Step("Log in as a standar user")
