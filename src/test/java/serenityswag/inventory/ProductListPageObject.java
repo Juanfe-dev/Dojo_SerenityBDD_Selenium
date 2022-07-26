@@ -18,4 +18,7 @@ public class ProductListPageObject extends PageObject {
         return findAll((".inventory_item_name")).textContents();
 
     }
+    public void openProductDetailsFor(String itemName) {
+        find(By.linkText(itemName)).click();
+    }
 }

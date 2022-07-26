@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SerenityRunner.class)
     public class WhenViewingHighlightedProducts extends UIInteractionSteps {
 
-        @Managed
+        @Managed(driver = "chrome")
         private WebDriver driver;
 
         @Steps
@@ -26,15 +26,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
         ProductListPageObject productList;
 
+        ProductDetailsPageObject productDetails;
+
         @Test
         public void shouldDisplayHighlightedProductsOnTheWelcomePage() {
             login.as(User.STANDARD_USER);
-
-
             List<String> productsOnDisplay = productList.titles();
-
             assertThat(productsOnDisplay).hasSize(6)
                     .contains("Sauce Labs Backpack");
+        }
+        @Test
+    public void shouldDisplayCorrectProductDetailsPage(){
+            login.as(User.STANDARD_USER);
+            String firstItemName = productList.titles().get(0);
 
+            //En vez de ejecutar un clic en el link aqui, crearemos un metodo
+            //Que pida como parametro el nombre visible en
+            //el explorador del item deseado, de clic en el
+            //e ingrese a los detalles de ese item (openProductDetailsFor)
+            productList.openProductDetailsFor(firstItemName);
+
+            assertThat(productDetails.productName()).isEqualTo(firstItemName);
         }
     }
