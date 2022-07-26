@@ -32,7 +32,5 @@ public class WhenLogginOn extends UIInteractionSteps {
                 Serenity.reportThat("The inventory page should be displayed with the correct title",
                         () -> assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products")
                 );
-
         }
-
 }
