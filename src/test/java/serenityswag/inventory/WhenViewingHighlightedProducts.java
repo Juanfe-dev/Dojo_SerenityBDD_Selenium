@@ -5,6 +5,7 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -36,7 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
                     .contains("Sauce Labs Backpack");
         }
         @Test
-    public void shouldDisplayCorrectProductDetailsPage(){
+        public void shouldDisplayCorrectProductDetailsPage(){
             login.as(User.STANDARD_USER);
             String firstItemName = productList.titles().get(0);
 
@@ -50,4 +51,19 @@ import static org.assertj.core.api.Assertions.assertThat;
             //should contain: ".inventory_details_container img[alt='Sauce Labs Backpack']"
             productDetails.productImageWithAltValueOf(firstItemName).shouldBeVisible();
         }
-    }
+
+        @Test
+        public void highlightedProductsShouldDisplayCorrespondingImages(){
+            login.as(User.STANDARD_USER);
+            List<String> productsOnDisplay = productList.titles();
+
+            //Declaracion e instanciamiento del Softassertion
+            SoftAssertions softly = new SoftAssertions();
+
+            productsOnDisplay.forEach(productName -> {
+                softly.assertThat(productList.imageTextForProduct(productName)).isEqualTo(productName);
+            });
+            //Almacenar todas las assertion hechas
+            softly.assertAll();
+        }
+}
