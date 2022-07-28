@@ -55,15 +55,20 @@ import static org.assertj.core.api.Assertions.assertThat;
         @Test
         public void highlightedProductsShouldDisplayCorrespondingImages(){
             login.as(User.STANDARD_USER);
+            //almacenamos los titulos de los items en una lista
             List<String> productsOnDisplay = productList.titles();
 
             //Declaracion e instanciamiento del Softassertion
             SoftAssertions softly = new SoftAssertions();
 
+            //iteramos en la lista mediante un foreach enviando como parametro a la funcion lambda
+            //el nombre de los items de la lista
+            //validamos que el nombre del item sea el mismo que el nombre en la imagen
             productsOnDisplay.forEach(productName -> {
+                //capturamos el assert con el softly
                 softly.assertThat(productList.imageTextForProduct(productName)).isEqualTo(productName);
             });
-            //Almacenar todas las assertion hechas
+            //Llevar a cabo todas las assertion capturadas
             softly.assertAll();
         }
 }
