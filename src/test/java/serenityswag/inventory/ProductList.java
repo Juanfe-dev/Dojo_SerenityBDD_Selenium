@@ -1,6 +1,6 @@
 package serenityswag.inventory;
 
-import net.thucydides.core.pages.PageObject;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 
 import java.util.List;
