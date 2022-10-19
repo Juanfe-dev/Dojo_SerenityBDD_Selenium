@@ -22,6 +22,7 @@ package serenityswag.authentication;
         private final String password;
         private final String description;
 
+
         User(String username, String password, String description) {
             this.username = username;
             this.password = password;
