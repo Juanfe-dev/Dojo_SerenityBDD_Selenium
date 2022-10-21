@@ -5,6 +5,7 @@ import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import seleniumeasy.pageobjects.CheckboxForm;
 import seleniumeasy.pageobjects.SingleInputFieldForm;
 import seleniumeasy.pageobjects.TwoInputFieldForm;
 
@@ -30,16 +31,13 @@ public class WhenInteractingWithInputForms {
      */
 
     SingleInputFieldForm singleInputFieldForm;
-
     @Test
     public void basicForms() {
-
         singleInputFieldForm.open();
         singleInputFieldForm.enterMessage("Hi there");
         singleInputFieldForm.showMessage();
 
         assertThat(singleInputFieldForm.displayedMessage()).isEqualTo("Hi there");
-
     }
 
     /**
@@ -49,19 +47,14 @@ public class WhenInteractingWithInputForms {
      */
 
     TwoInputFieldForm twoInputFieldForm;
-
     @Test
     public void basicFormsWithMultipleFields() {
-
         twoInputFieldForm.open();
         twoInputFieldForm.enterA("2");
         twoInputFieldForm.enterB("3");
         twoInputFieldForm.getTotal();
 
         assertThat(twoInputFieldForm.displayedTotal()).isEqualTo("5");
-
-
-
     }
 
     /**
@@ -69,12 +62,41 @@ public class WhenInteractingWithInputForms {
      * Check that a message appears when you click the checkbox
      * https://demo.seleniumeasy.com/basic-checkbox-demo.html
      */
+
+    CheckboxForm checkboxForm;
     @Test
     public void singleCheckbox() {
+        checkboxForm.open();
+        checkboxForm.setAgeSelected();
+
+        assertThat(checkboxForm.ageText()).isEqualTo("Success - Check box is checked");
     }
 
+    private static final List<String> ALL_THE_OPTIONS = asList("Option 1", "Option 2", "Option 3", "Option 4");
     @Test
     public void multipleCheckboxes() {
+
+        checkboxForm.open();
+
+        assertThat(ALL_THE_OPTIONS).allMatch(
+                option -> !checkboxForm.optionIsCheckedFor(option)
+        );
+
+        checkboxForm.checkAll();
+        assertThat(ALL_THE_OPTIONS).allMatch(
+                option -> checkboxForm.optionIsCheckedFor(option)
+        );
+
+       /* assertThat(checkboxForm.optionIsCheckedFor("Option 1")).isFalse();
+        assertThat(checkboxForm.optionIsCheckedFor("Option 2")).isFalse();
+        assertThat(checkboxForm.optionIsCheckedFor("Option 3")).isFalse();
+        assertThat(checkboxForm.optionIsCheckedFor("Option 4")).isFalse();
+
+        checkboxForm.checkAll();
+        assertThat(checkboxForm.optionIsCheckedFor("Option 1")).isTrue();
+        assertThat(checkboxForm.optionIsCheckedFor("Option 2")).isTrue();
+        assertThat(checkboxForm.optionIsCheckedFor("Option 3")).isTrue();
+        assertThat(checkboxForm.optionIsCheckedFor("Option 4")).isTrue();*/
     }
 
     /**
