@@ -5,9 +5,7 @@ import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import seleniumeasy.pageobjects.CheckboxForm;
-import seleniumeasy.pageobjects.SingleInputFieldForm;
-import seleniumeasy.pageobjects.TwoInputFieldForm;
+import seleniumeasy.pageobjects.*;
 
 import java.util.List;
 
@@ -104,12 +102,31 @@ public class WhenInteractingWithInputForms {
      * Check that a message appears when you click the radio button
      * https://demo.seleniumeasy.com/basic-radiobutton-demo.html
      */
+
+    RadioButtonsForm radioButtonsForm;
     @Test
     public void radioButtons() {
+        radioButtonsForm.open();
+
+        radioButtonsForm.selectOption("Male");
+        radioButtonsForm.getCheckedValue();
+
+        assertThat(radioButtonsForm.getResult()).isEqualTo("Radio button 'Male' is checked");
+
     }
 
+    MultipleRadioButtonsForm multipleRadioButtonsForm;
     @Test
     public void multipleRadioButtons() {
+        multipleRadioButtonsForm.open();
+        multipleRadioButtonsForm.selectGender("Female");
+        multipleRadioButtonsForm.selectAgeGroup("5 - 15");
+        multipleRadioButtonsForm.getValues();
+
+        assertThat(multipleRadioButtonsForm.getResult())
+                .contains("Sex : Female")
+                .contains("Age group: 5 - 15");
+
     }
 
     /**
