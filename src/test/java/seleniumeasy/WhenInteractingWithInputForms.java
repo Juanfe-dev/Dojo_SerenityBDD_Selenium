@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import seleniumeasy.pageobjects.SingleInputFieldForm;
+import seleniumeasy.pageobjects.TwoInputFieldForm;
 
 import java.util.List;
 
@@ -47,8 +48,20 @@ public class WhenInteractingWithInputForms {
      * https://demo.seleniumeasy.com/basic-first-form-demo.html
      */
 
+    TwoInputFieldForm twoInputFieldForm;
+
     @Test
     public void basicFormsWithMultipleFields() {
+
+        twoInputFieldForm.open();
+        twoInputFieldForm.enterA("2");
+        twoInputFieldForm.enterB("3");
+        twoInputFieldForm.getTotal();
+
+        assertThat(twoInputFieldForm.displayedTotal()).isEqualTo("5");
+
+
+
     }
 
     /**
