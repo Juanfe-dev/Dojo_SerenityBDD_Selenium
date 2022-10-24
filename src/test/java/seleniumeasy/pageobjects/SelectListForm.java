@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 public class SelectListForm extends SeleniumEasyForm {
 
     //"#selected-value" could be refactored as a constant
-    private static final By DAYS_OF_THE_WEEK = By.id("#selected-value");
+    private static final By DAYS_OF_THE_WEEK = By.className("form-control");
 
     public String selectedDay() {
         //return $("#selected-value").getSelectedValue();

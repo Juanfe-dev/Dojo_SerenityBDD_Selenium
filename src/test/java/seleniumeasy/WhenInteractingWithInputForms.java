@@ -2,9 +2,12 @@ package seleniumeasy;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import seleniumeasy.actions.FormPage;
+import seleniumeasy.actions.NavigateActions;
 import seleniumeasy.pageobjects.*;
 
 import java.util.List;
@@ -22,6 +25,9 @@ public class WhenInteractingWithInputForms {
     @Managed(driver = "chrome", uniqueSession = true)
     WebDriver driver;
 
+    @Steps
+    NavigateActions navigate;
+
     /**
      * Basic form fields:
      * Enter a message and check that the message is correctly displayed
@@ -31,7 +37,9 @@ public class WhenInteractingWithInputForms {
     SingleInputFieldForm singleInputFieldForm;
     @Test
     public void basicForms() {
-        singleInputFieldForm.open();
+        //       singleInputFieldForm.open();
+        //navigate.toTheSingleInputFieldForm();
+        navigate.to(FormPage.SingleInputFieldForm);
         singleInputFieldForm.enterMessage("Hi there");
         singleInputFieldForm.showMessage();
 
@@ -47,7 +55,9 @@ public class WhenInteractingWithInputForms {
     TwoInputFieldForm twoInputFieldForm;
     @Test
     public void basicFormsWithMultipleFields() {
-        twoInputFieldForm.open();
+        //twoInputFieldForm.open();
+        //navigate.toTheTwoInputFieldForm();
+        navigate.to(FormPage.TwoInputFieldForm);
         twoInputFieldForm.enterA("2");
         twoInputFieldForm.enterB("3");
         twoInputFieldForm.getTotal();
@@ -64,7 +74,9 @@ public class WhenInteractingWithInputForms {
     CheckboxForm checkboxForm;
     @Test
     public void singleCheckbox() {
-        checkboxForm.open();
+        //checkboxForm.open();
+        //navigate.toTheCheckboxForm();
+        navigate.to(FormPage.CheckboxForm);
         checkboxForm.setAgeSelected();
 
         assertThat(checkboxForm.ageText()).isEqualTo("Success - Check box is checked");
@@ -74,7 +86,9 @@ public class WhenInteractingWithInputForms {
     @Test
     public void multipleCheckboxes() {
 
-        checkboxForm.open();
+        //checkboxForm.open();
+        //navigate.toTheCheckboxForm();
+        navigate.to(FormPage.CheckboxForm);
 
         assertThat(ALL_THE_OPTIONS).allMatch(
                 option -> !checkboxForm.optionIsCheckedFor(option)
@@ -106,7 +120,8 @@ public class WhenInteractingWithInputForms {
     RadioButtonsForm radioButtonsForm;
     @Test
     public void radioButtons() {
-        radioButtonsForm.open();
+        //radioButtonsForm.open();
+        navigate.toTheRadioButtonsForm();
 
         radioButtonsForm.selectOption("Male");
         radioButtonsForm.getCheckedValue();
@@ -118,7 +133,8 @@ public class WhenInteractingWithInputForms {
     MultipleRadioButtonsForm multipleRadioButtonsForm;
     @Test
     public void multipleRadioButtons() {
-        multipleRadioButtonsForm.open();
+        //multipleRadioButtonsForm.open();
+        navigate.toTheMultipleRadioButtonsForm();
         multipleRadioButtonsForm.selectGender("Female");
         multipleRadioButtonsForm.selectAgeGroup("5 - 15");
         multipleRadioButtonsForm.getValues();
@@ -135,8 +151,8 @@ public class WhenInteractingWithInputForms {
     SelectListForm selectListForm;
     @Test
     public void selectList() {
-        selectListForm.open();
-
+        //selectListForm.open();
+        navigate.toTheSelectListForm();
         assertThat(selectListForm.selectedDay()).isEmpty();
         selectListForm.selectDay("Wednesday");
         assertThat(selectListForm.selectedDay()).isEqualTo("Wednesday");
@@ -150,7 +166,8 @@ public class WhenInteractingWithInputForms {
     MultiSelectListForm multiSelectListForm;
     @Test
     public void multiSelectList() {
-        multiSelectListForm.open();
+       // multiSelectListForm.open();
+        navigate.toTheMultiSelectListForm();
 
         assertThat(multiSelectListForm.selectedStates()).isEmpty();
         multiSelectListForm.selectStates("Florida","Ohio","Texas");
@@ -165,7 +182,8 @@ public class WhenInteractingWithInputForms {
     HoverPage hoverPage;
     @Test
     public void hover(){
-        hoverPage.open();
+        //hoverPage.open();
+        navigate.toTheHoverPage();
 
         hoverPage.hoverOverFigure(1);
         hoverPage.captionForFigure(1).shouldBeVisible();
@@ -178,7 +196,5 @@ public class WhenInteractingWithInputForms {
         hoverPage.hoverOverFigure(3);
         hoverPage.captionForFigure(3).shouldBeVisible();
         hoverPage.captionForFigure(3).shouldContainText("user3");
-
-
     }
 }
