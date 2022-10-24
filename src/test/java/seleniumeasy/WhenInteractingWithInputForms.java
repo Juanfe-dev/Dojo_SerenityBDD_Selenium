@@ -156,4 +156,29 @@ public class WhenInteractingWithInputForms {
         multiSelectListForm.selectStates("Florida","Ohio","Texas");
         assertThat(multiSelectListForm.selectedStates()).containsExactly("Florida","Ohio","Texas");
     }
+
+    /**
+    * Hovers
+     * https://the-internet.herokuapp.com/hovers
+    * */
+
+    HoverPage hoverPage;
+    @Test
+    public void hover(){
+        hoverPage.open();
+
+        hoverPage.hoverOverFigure(1);
+        hoverPage.captionForFigure(1).shouldBeVisible();
+        hoverPage.captionForFigure(1).shouldContainText("user1");
+
+        hoverPage.hoverOverFigure(2);
+        hoverPage.captionForFigure(2).shouldBeVisible();
+        hoverPage.captionForFigure(2).shouldContainText("user2");
+
+        hoverPage.hoverOverFigure(3);
+        hoverPage.captionForFigure(3).shouldBeVisible();
+        hoverPage.captionForFigure(3).shouldContainText("user3");
+
+
+    }
 }
