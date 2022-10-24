@@ -126,22 +126,34 @@ public class WhenInteractingWithInputForms {
         assertThat(multipleRadioButtonsForm.getResult())
                 .contains("Sex : Female")
                 .contains("Age group: 5 - 15");
-
     }
 
     /**
      * Dropdown lists
      * https://demo.seleniumeasy.com/basic-select-dropdown-demo.html
      */
+    SelectListForm selectListForm;
     @Test
     public void selectList() {
+        selectListForm.open();
+
+        assertThat(selectListForm.selectedDay()).isEmpty();
+        selectListForm.selectDay("Wednesday");
+        assertThat(selectListForm.selectedDay()).isEqualTo("Wednesday");
     }
 
     /**
      * Multi-Select Dropdown lists
      * https://demo.seleniumeasy.com/basic-select-dropdown-demo.html
      */
+
+    MultiSelectListForm multiSelectListForm;
     @Test
     public void multiSelectList() {
+        multiSelectListForm.open();
+
+        assertThat(multiSelectListForm.selectedStates()).isEmpty();
+        multiSelectListForm.selectStates("Florida","Ohio","Texas");
+        assertThat(multiSelectListForm.selectedStates()).containsExactly("Florida","Ohio","Texas");
     }
 }
