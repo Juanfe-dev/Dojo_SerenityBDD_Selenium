@@ -10,7 +10,9 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import serenityswag.inventory.InventoryPage;
 
+import static net.serenitybdd.core.Serenity.recordReportData;
 import static org.assertj.core.api.Assertions.assertThat;
+import static serenityswag.authentication.User.STANDARD_USER;
 
 @RunWith(SerenityRunner.class)
 public class WhenLogginOn extends UIInteractionSteps {
@@ -27,7 +29,11 @@ public class WhenLogginOn extends UIInteractionSteps {
 
                /* assertThat($(".title").getText()).isEqualToIgnoringCase("Products");*/
 
-                login.as(User.STANDARD_USER);
+                Serenity.recordReportData()
+                        .withTitle("User credentials")
+                        .andContents("User: " + STANDARD_USER);
+
+                login.as(STANDARD_USER);
                 Serenity.reportThat("The inventory page should be displayed with the correct title",
                         () -> assertThat(inventoryPage.getHeading()).isEqualToIgnoringCase("Products")
                 );
