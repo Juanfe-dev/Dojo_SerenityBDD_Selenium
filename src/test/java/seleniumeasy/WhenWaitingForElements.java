@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import seleniumeasy.pageobjects.AlertMessagePage;
+import seleniumeasy.pageobjects.DynamicDataPage;
 import seleniumeasy.pageobjects.ModelDialogPage;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +32,6 @@ public class WhenWaitingForElements {
     AlertMessagePage alertMessagePage;
     @Test
     public void waitingForMessageToClose() {
-
         alertMessagePage.open();
         alertMessagePage.openSuccessMessage();
 
@@ -39,12 +39,21 @@ public class WhenWaitingForElements {
                 .contains("I'm an autocloseable success message.");
 
         alertMessagePage.waitForMessageToDissapear();
-
         assertThat(alertMessagePage.alertSuccessMessage().shouldNotBeVisible());
-
     }
 
+    DynamicDataPage dynamicDataPage;
     @Test
     public void waitingForElementsToAppear() {
+
+        dynamicDataPage.open();
+
+        dynamicDataPage.getNewUser();
+
+        assertThat(dynamicDataPage.userDescription())
+                .contains("First Name")
+                .contains("Last Name");
+
+
     }
 }
