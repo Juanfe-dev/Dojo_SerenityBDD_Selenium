@@ -1,15 +1,15 @@
 package com.serenitydojo.assertiondemo;
 
-import org.assertj.core.api.Assertions;
-import org.junit.Assert;
-import org.junit.Test;
-
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WhenAddingNumbers {
+    @DisplayName("When adding numbers")
+    class WhenAddingNumbers {
 
+    @DisplayName("When adding two integer correctly")
     @Test
-    public void shouldAddTwoIntegerCorrectly(){
+    void shouldAddTwoIntegerCorrectly(){
         int a = 1;
         int b = 2 ;
         int sum = a + b;

@@ -1,16 +1,12 @@
 package serenityswag.cart;
 
 import net.serenitybdd.core.Serenity;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import serenityswag.authentication.LoginActions;
-import serenityswag.cart.CartActions;
-import serenityswag.cart.ShoppingCartIcon;
 import serenityswag.inventory.ProductList;
 
 import java.util.List;
@@ -18,9 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static serenityswag.authentication.User.STANDARD_USER;
 
-@RunWith(SerenityRunner.class)
-public class WhenAddingAnItemToTheCart {
-
+class WhenAddingAnItemToTheCart {
 
     @Managed(driver = "chrome")
     WebDriver driver;
@@ -28,7 +22,7 @@ public class WhenAddingAnItemToTheCart {
     @Steps
     LoginActions login;
 
-    @Before
+    @BeforeEach
     public void login(){
         login.as(STANDARD_USER);
     }
@@ -39,7 +33,7 @@ public class WhenAddingAnItemToTheCart {
     CartActions cart;
 
     @Test
-    public void theCorrectItemCountShouldBeShown(){
+    void theCorrectItemCountShouldBeShown(){
         //Check that the shopping cart badge is empty
         Serenity.reportThat("The shopping cart badge should be empty",
                 () ->    assertThat(shoppingCartIcon.badgeCount()).isEmpty()
@@ -56,7 +50,7 @@ public class WhenAddingAnItemToTheCart {
 
     ProductList productList;
     @Test
-    public void allTheItemsShouldAppearInTheCart(){
+    void allTheItemsShouldAppearInTheCart(){
         //Add several items to the cart
         List<String> selectedItems = firstThreeProductTitlesDisplayed();
 
@@ -78,7 +72,7 @@ public class WhenAddingAnItemToTheCart {
 
     //Test creado en el capitulo 8.1.0
     @Test
-    public void  pricesForEachItemShouldBeShownInTheCart(){
+    void  pricesForEachItemShouldBeShownInTheCart(){
 
         // Add items to the shopping cart
         cart.addItems(firstThreeProductTitlesDisplayed());

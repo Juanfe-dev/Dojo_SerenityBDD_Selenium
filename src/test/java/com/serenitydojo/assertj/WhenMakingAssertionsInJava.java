@@ -1,15 +1,15 @@
 package com.serenitydojo.assertj;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class WhenMakingAssertionsInJava {
+ class WhenMakingAssertionsInJava {
 
     @Test
-    public void traditionalAssertions(){
+    void traditionalAssertions(){
         int age = 40;
         List<Integer> ages = Arrays.asList(10,20,21,30);
         //assertEquals(21,age);
@@ -17,7 +17,7 @@ public class WhenMakingAssertionsInJava {
     }
 
     @Test
-    public void assertJAssertions(){
+    void assertJAssertions(){
         int age = 30;
         List<Integer> ages = Arrays.asList(10,20,21,30);
 

@@ -1,15 +1,12 @@
 package seleniumeasy;
 
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import seleniumeasy.actions.FormPage;
 import seleniumeasy.actions.NavigateActions;
 import seleniumeasy.pageobjects.*;
-
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -19,10 +16,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * This is a series of exercises designed to explore how to use
  * Serenity BDD to test various kinds of HTML elements
  */
-@RunWith(SerenityRunner.class)
-public class WhenInteractingWithInputForms {
 
-    @Managed(driver = "chrome", uniqueSession = true)
+class WhenInteractingWithInputForms {
+
+    //@Managed(driver = "chrome", uniqueSession = true)
     WebDriver driver;
 
     @Steps
@@ -36,7 +33,7 @@ public class WhenInteractingWithInputForms {
 
     SingleInputFieldForm singleInputFieldForm;
     @Test
-    public void basicForms() {
+    void basicForms() {
         //       singleInputFieldForm.open();
         //navigate.toTheSingleInputFieldForm();
         navigate.to(FormPage.SingleInputFieldForm);
@@ -54,7 +51,7 @@ public class WhenInteractingWithInputForms {
 
     TwoInputFieldForm twoInputFieldForm;
     @Test
-    public void basicFormsWithMultipleFields() {
+    void basicFormsWithMultipleFields() {
         //twoInputFieldForm.open();
         //navigate.toTheTwoInputFieldForm();
         navigate.to(FormPage.TwoInputFieldForm);
@@ -73,7 +70,7 @@ public class WhenInteractingWithInputForms {
 
     CheckboxForm checkboxForm;
     @Test
-    public void singleCheckbox() {
+    void singleCheckbox() {
         //checkboxForm.open();
         //navigate.toTheCheckboxForm();
         navigate.to(FormPage.CheckboxForm);
@@ -84,7 +81,7 @@ public class WhenInteractingWithInputForms {
 
     private static final List<String> ALL_THE_OPTIONS = asList("Option 1", "Option 2", "Option 3", "Option 4");
     @Test
-    public void multipleCheckboxes() {
+    void multipleCheckboxes() {
 
         //checkboxForm.open();
         //navigate.toTheCheckboxForm();
@@ -119,7 +116,7 @@ public class WhenInteractingWithInputForms {
 
     RadioButtonsForm radioButtonsForm;
     @Test
-    public void radioButtons() {
+    void radioButtons() {
         //radioButtonsForm.open();
         navigate.toTheRadioButtonsForm();
 
@@ -132,7 +129,7 @@ public class WhenInteractingWithInputForms {
 
     MultipleRadioButtonsForm multipleRadioButtonsForm;
     @Test
-    public void multipleRadioButtons() {
+    void multipleRadioButtons() {
         //multipleRadioButtonsForm.open();
         navigate.toTheMultipleRadioButtonsForm();
         multipleRadioButtonsForm.selectGender("Female");
@@ -150,7 +147,7 @@ public class WhenInteractingWithInputForms {
      */
     SelectListForm selectListForm;
     @Test
-    public void selectList() {
+    void selectList() {
         //selectListForm.open();
         navigate.toTheSelectListForm();
         assertThat(selectListForm.selectedDay()).isEmpty();
@@ -165,7 +162,7 @@ public class WhenInteractingWithInputForms {
 
     MultiSelectListForm multiSelectListForm;
     @Test
-    public void multiSelectList() {
+    void multiSelectList() {
        // multiSelectListForm.open();
         navigate.toTheMultiSelectListForm();
 
@@ -181,7 +178,7 @@ public class WhenInteractingWithInputForms {
 
     HoverPage hoverPage;
     @Test
-    public void hover(){
+    void hover(){
         //hoverPage.open();
         navigate.toTheHoverPage();
 

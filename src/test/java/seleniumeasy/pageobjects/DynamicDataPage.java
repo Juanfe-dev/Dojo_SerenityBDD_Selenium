@@ -22,7 +22,9 @@ public class DynamicDataPage extends SeleniumEasyForm {
         // 1.
             withTimeoutOf(Duration.ofSeconds(30)).
             waitFor(
-                    ExpectedConditions.invisibilityOfElementWithText(USER_DETAILS_PANE, "loading...")
+                    ExpectedConditions
+                            .invisibilityOfElementWithText(USER_DETAILS_PANE,
+                            "loading...")
             );
         // 2. using the serenity.conf fluentwait
             //waitFor((ExpectedConditions.)...

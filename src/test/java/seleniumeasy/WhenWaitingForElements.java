@@ -1,18 +1,15 @@
 package seleniumeasy;
 
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import seleniumeasy.pageobjects.AlertMessagePage;
 import seleniumeasy.pageobjects.DynamicDataPage;
 import seleniumeasy.pageobjects.ModelDialogPage;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-@RunWith(SerenityRunner.class)
-public class WhenWaitingForElements {
+ class WhenWaitingForElements {
 
     @Managed(driver = "chrome")
     WebDriver driver;
@@ -20,7 +17,7 @@ public class WhenWaitingForElements {
     ModelDialogPage modelDialogPage;
 
     @Test
-    public void waitingForAModalDialog() {
+    void waitingForAModalDialog() {
         modelDialogPage.open();
         modelDialogPage.saveChangesButton().shouldNotBeVisible();
         modelDialogPage.openModal();
@@ -31,7 +28,7 @@ public class WhenWaitingForElements {
 
     AlertMessagePage alertMessagePage;
     @Test
-    public void waitingForMessageToClose() {
+    void waitingForMessageToClose() {
         alertMessagePage.open();
         alertMessagePage.openSuccessMessage();
 
@@ -44,7 +41,7 @@ public class WhenWaitingForElements {
 
     DynamicDataPage dynamicDataPage;
     @Test
-    public void waitingForElementsToAppear() {
+    void waitingForElementsToAppear() {
 
         dynamicDataPage.open();
 
@@ -53,7 +50,5 @@ public class WhenWaitingForElements {
         assertThat(dynamicDataPage.userDescription())
                 .contains("First Name")
                 .contains("Last Name");
-
-
     }
 }

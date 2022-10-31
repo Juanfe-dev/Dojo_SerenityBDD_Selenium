@@ -2,20 +2,16 @@ package serenityswag.authentication;
 
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.UIInteractionSteps;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import serenityswag.inventory.InventoryPage;
 
-import static net.serenitybdd.core.Serenity.recordReportData;
 import static org.assertj.core.api.Assertions.assertThat;
 import static serenityswag.authentication.User.STANDARD_USER;
 
-@RunWith(SerenityRunner.class)
-public class WhenLogginOn extends UIInteractionSteps {
+class WhenLogginOn extends UIInteractionSteps {
 
         @Managed
         private WebDriver driver;
@@ -25,7 +21,7 @@ public class WhenLogginOn extends UIInteractionSteps {
 
         InventoryPage inventoryPage;
         @Test
-        public void usersCanLogOnViaTheHomePage(){
+        void usersCanLogOnViaTheHomePage(){
 
                /* assertThat($(".title").getText()).isEqualToIgnoringCase("Products");*/
 

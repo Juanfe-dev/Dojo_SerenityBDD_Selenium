@@ -3,22 +3,20 @@ package serenityswag.inventory;
 
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.UIInteractionSteps;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import serenityswag.authentication.User;
 import serenityswag.authentication.LoginActions;
+import serenityswag.authentication.User;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SerenityRunner.class)
-    public class WhenViewingHighlightedProducts extends UIInteractionSteps {
+
+    class WhenViewingHighlightedProducts extends UIInteractionSteps {
 
         @Managed(driver = "chrome")
         private WebDriver driver;
@@ -34,14 +32,14 @@ import static org.assertj.core.api.Assertions.assertThat;
         ViewProductDetailsActions viewProductDetails;
 
         @Test
-        public void shouldDisplayHighlightedProductsOnTheWelcomePage() {
+        void shouldDisplayHighlightedProductsOnTheWelcomePage() {
             login.as(User.STANDARD_USER);
             List<String> productsOnDisplay = productList.titles();
             assertThat(productsOnDisplay).hasSize(6)
                     .contains("Sauce Labs Backpack");
         }
         @Test
-        public void shouldDisplayCorrectProductDetailsPage(){
+        void shouldDisplayCorrectProductDetailsPage(){
             login.as(User.STANDARD_USER);
             String firstItemName = productList.titles().get(0);
 
@@ -70,7 +68,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         }
 
         @Test
-        public void highlightedProductsShouldDisplayCorrespondingImages(){
+        void highlightedProductsShouldDisplayCorrespondingImages(){
             login.as(User.STANDARD_USER);
             //almacenamos los titulos de los items en una lista
             List<String> productsOnDisplay = productList.titles();
