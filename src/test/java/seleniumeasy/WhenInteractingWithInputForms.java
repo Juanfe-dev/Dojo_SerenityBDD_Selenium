@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WhenInteractingWithInputForms {
 
     //@Managed(driver = "chrome", uniqueSession = true)
-    WebDriver driver;
+    //WebDriver driver;
 
     @Steps
     NavigateActions navigate;
