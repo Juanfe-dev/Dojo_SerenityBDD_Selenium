@@ -25,13 +25,6 @@ public class CalculationsTest {
     private  String a;
     private  String b;
     private  String total;
-    /*
-    //Used in Chapter 12.0.0
-    //Commented for Chapter 12.1.0
-    private final String a;
-    private final String b;
-    private final String total;
-    */
 
     @Managed(driver = "chrome", options = "--headless")
     WebDriver driver;
@@ -49,6 +42,14 @@ public class CalculationsTest {
         assertThat(twoInputFieldForm.displayedTotal()).isEqualTo(total);
     }
 }
+
+/*
+    //Used in Chapter 12.0.0
+    //Commented for Chapter 12.1.0
+    private final String a;
+    private final String b;
+    private final String total;
+    */
 
     /*
     //Used in Chapter 12.0.0
