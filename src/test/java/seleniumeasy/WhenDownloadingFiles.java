@@ -49,6 +49,4 @@ import static org.awaitility.Awaitility.await;
 
         assertThat(downloadedFile.getName()).isEqualTo("sample.png");
     }
-
-
 }
