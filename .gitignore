@@ -12,6 +12,7 @@ buildNumber.properties
 .idea
 *.iml
 
+serenity.properties
 /serenity.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
