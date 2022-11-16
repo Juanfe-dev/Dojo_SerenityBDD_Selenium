@@ -1,6 +1,7 @@
 package webtests.seleniumeasy;
 
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WithTag;
 import org.junit.jupiter.api.Test;
 import webtests.seleniumeasy.actions.FormPage;
 import webtests.seleniumeasy.actions.NavigateActions;
@@ -15,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * This is a series of exercises designed to explore how to use
  * Serenity BDD to test various kinds of HTML elements
  */
-
+@WithTag("not local")
 class WhenInteractingWithInputForms {
 
     //@Managed(driver = "chrome", uniqueSession = true)

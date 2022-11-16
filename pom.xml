@@ -96,6 +96,15 @@
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
                         <junit.jupiter.extensions.autodetection.enabled>true</junit.jupiter.extensions.autodetection.enabled>
                     </systemPropertyVariables>
+
+<!--                    Parallel in remote-->
+<!--                    <parallel>classesAndMethods</parallel>     -->
+<!--                    <useUnlimitedThreads>true</useUnlimitedThreads>-->
+
+<!--                    Parallel in local-->
+                        <parallel>classesAndMethods</parallel>
+                        <threadCount>4</threadCount>
+
                 </configuration>
                 <executions>
                     <execution>
